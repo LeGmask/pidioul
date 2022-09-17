@@ -1,16 +1,14 @@
-# This is a sample Python script.
+#!/usr/bin/env python3
+from typing import Literal, Optional
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import discord
+from discord.ext import commands
 
+from src.pidioul import Pidioul
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+bot = Pidioul(command_prefix='/', intents=discord.Intents.all())
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+try:
+	bot.run('', root_logger=True)
+finally:
+	print('EXITING GRACEFULLY')

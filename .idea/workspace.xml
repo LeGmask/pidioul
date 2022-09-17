@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Init] initialize poetry + pycharm">
+    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Deps] add python-chess">
+      <change afterPath="$PROJECT_DIR$/cogs/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cogs/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cogs/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pidioul.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sync.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
@@ -19,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -43,9 +50,16 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cogs" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663358224035</updated>
       <workItem from="1663358226084" duration="192000" />
-      <workItem from="1663358424099" duration="2074000" />
+      <workItem from="1663358424099" duration="19906000" />
     </task>
     <task id="LOCAL-00001" summary="[Init] initialize poetry + pycharm">
       <created>1663358336297</created>
@@ -64,7 +78,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663358336297</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[Init] add python-chess">
+      <created>1663361288933</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663361288933</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[Deps] add python-chess">
+      <created>1663361301539</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663361301539</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +111,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[Init] initialize poetry + pycharm" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Init] initialize poetry + pycharm" />
+    <MESSAGE value="[Init] add python-chess" />
+    <MESSAGE value="[Deps] add python-chess" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Deps] add python-chess" />
   </component>
 </project>
