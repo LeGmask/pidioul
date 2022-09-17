@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Deps] add python-chess">
-      <change afterPath="$PROJECT_DIR$/cogs/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cogs/loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cogs/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pidioul.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sync.py" afterDir="false" />
+    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Discord] working cogs loading + working sync command">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -69,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663358224035</updated>
       <workItem from="1663358226084" duration="192000" />
-      <workItem from="1663358424099" duration="19906000" />
+      <workItem from="1663358424099" duration="20821000" />
     </task>
     <task id="LOCAL-00001" summary="[Init] initialize poetry + pycharm">
       <created>1663358336297</created>
@@ -92,7 +88,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663361301539</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[Discord] working cogs loading + working sync command">
+      <created>1663445209051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663445209051</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[Discord] working cogs loading + working sync command">
+      <created>1663445548764</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663445548764</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +123,7 @@
     <MESSAGE value="[Init] initialize poetry + pycharm" />
     <MESSAGE value="[Init] add python-chess" />
     <MESSAGE value="[Deps] add python-chess" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Deps] add python-chess" />
+    <MESSAGE value="[Discord] working cogs loading + working sync command" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Discord] working cogs loading + working sync command" />
   </component>
 </project>
