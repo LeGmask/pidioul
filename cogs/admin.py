@@ -1,3 +1,4 @@
+import logging
 from typing import Optional, Literal
 
 import discord
@@ -9,6 +10,9 @@ class AdminCog(commands.GroupCog, name="admin"):
 	def __init__(self, bot: commands.Bot) -> None:
 		self.bot = bot
 		super().__init__()
+
+		self.logger = logging.getLogger(__name__)
+		self.logger.log(logging.INFO, f"Loaded {self.__class__.__name__}")
 
 	@commands.command()
 	@commands.guild_only()
@@ -32,6 +36,8 @@ class AdminCog(commands.GroupCog, name="admin"):
 			await ctx.send(
 				f"Synced {len(synced)} commands {'globally' if spec is None else 'to the current guild.'}"
 			)
+			self.logger.log(logging.INFO,
+							f"Synced {len(synced)} commands {'globally' if spec is None else 'to the current guild.'}")
 			return
 
 		ret = 0
@@ -44,7 +50,7 @@ class AdminCog(commands.GroupCog, name="admin"):
 				ret += 1
 
 		await ctx.send(f"Synced the tree to {ret}/{len(guilds)}.")
-
+		self.logger.log(logging.INFO, f"Synced the tree to {ret}/{len(guilds)}.")
 
 	@app_commands.command(name="sub-2")
 	async def my_sub_command_2(self, interaction: discord.Interaction) -> None:

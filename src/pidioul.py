@@ -9,5 +9,5 @@ class Pidioul(commands.Bot):
 		await Cogs(self).load()
 
 	async def on_ready(self):
-		logger = logging.getLogger(self.__class__.__name__)
+		logger = logging.getLogger(__name__)
 		logger.log(logging.INFO, f"Logged in as {self.user.name} (ID: {self.user.id}) on {len(self.guilds)} guilds")

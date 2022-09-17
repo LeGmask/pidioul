@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Discord] working cogs loading + working sync command">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5411fb87-3536-4d8d-ae3a-a63f53b34fe5" name="Changes" comment="[Config] init config w/ dynaconf">
       <change afterPath="$PROJECT_DIR$/test.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cogs/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/cogs/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cogs/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/cogs/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pidioul.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pidioul.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/evann/Downloads/new_ui_preview.jar",
+    "last_opened_file_path": "/home/evann/Documents/dev/pidioul",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -50,6 +50,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cogs" />
       <recent name="$PROJECT_DIR$" />
@@ -65,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663358224035</updated>
       <workItem from="1663358226084" duration="192000" />
-      <workItem from="1663358424099" duration="20821000" />
+      <workItem from="1663358424099" duration="21830000" />
     </task>
     <task id="LOCAL-00001" summary="[Init] initialize poetry + pycharm">
       <created>1663358336297</created>
@@ -102,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663445548764</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[Config] init config w/ dynaconf">
+      <created>1663446227155</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663446227155</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +134,7 @@
     <MESSAGE value="[Init] add python-chess" />
     <MESSAGE value="[Deps] add python-chess" />
     <MESSAGE value="[Discord] working cogs loading + working sync command" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Discord] working cogs loading + working sync command" />
+    <MESSAGE value="[Config] init config w/ dynaconf" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Config] init config w/ dynaconf" />
   </component>
 </project>

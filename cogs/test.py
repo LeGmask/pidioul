@@ -8,7 +8,7 @@ class Test(commands.Cog):
 		self.logger = logging.getLogger(__name__)
 
 		self.bot = bot
-		self.logger.log(logging.WARN, f"Loaded {self.__class__.__name__}")
+		self.logger.log(logging.INFO, f"Loaded {self.__class__.__name__}")
 
 	@commands.command()
 	async def test(self, ctx):
