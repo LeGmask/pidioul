@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 import logging
-import discord
 
-from config import settings
+from src.config import settings
 from src.pidioul import Pidioul
 
-bot = Pidioul(command_prefix='/', intents=discord.Intents.all())
+bot = Pidioul()
 
 try:
 	bot.run(settings.discord.token, root_logger=True)

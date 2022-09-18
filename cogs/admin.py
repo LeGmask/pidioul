@@ -2,12 +2,13 @@ import logging
 from typing import Optional, Literal
 
 import discord
-from discord import app_commands
 from discord.ext import commands
+
+from src.pidioul import Pidioul
 
 
 class AdminCog(commands.GroupCog, name="admin"):
-	def __init__(self, bot: commands.Bot) -> None:
+	def __init__(self, bot: Pidioul) -> None:
 		self.bot = bot
 		super().__init__()
 
@@ -52,11 +53,6 @@ class AdminCog(commands.GroupCog, name="admin"):
 		await ctx.send(f"Synced the tree to {ret}/{len(guilds)}.")
 		self.logger.log(logging.INFO, f"Synced the tree to {ret}/{len(guilds)}.")
 
-	@app_commands.command(name="sub-2")
-	async def my_sub_command_2(self, interaction: discord.Interaction) -> None:
-		""" /parent sub-2 """
-		await interaction.response.send_message("Hello from sub command 2", ephemeral=True)
 
-
-async def setup(bot: commands.Bot) -> None:
+async def setup(bot: Pidioul) -> None:
 	await bot.add_cog(AdminCog(bot))

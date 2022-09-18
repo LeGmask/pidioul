@@ -174,6 +174,17 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "click"
+version = "8.1.3"
+description = "Composable command line interface toolkit"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
 name = "colorama"
 version = "0.4.5"
 description = "Cross-platform colored terminal text."
@@ -688,6 +699,30 @@ qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
 testing = ["docopt", "pytest (<6.0.0)"]
 
 [[package]]
+name = "peewee"
+version = "3.15.2"
+description = "a little orm"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "peewee-migrate"
+version = "1.5.1"
+description = "A simple migration engine for Peewee ORM"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=6.7"
+peewee = ">=3.3.3"
+
+[package.extras]
+build = ["bump2version", "wheel"]
+tests = ["psycopg2-binary", "pytest", "pytest-mypy"]
+
+[[package]]
 name = "pexpect"
 version = "4.8.0"
 description = "Pexpect allows easy control of interactive console applications."
@@ -1013,7 +1048,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "e5823f7c002376ce624c981010c2e083b2e13678d3ee88a104fa4bfd3b5ede0c"
+content-hash = "8b54ce90bcfc5eabddc4b2b3a6676a14640898904ef2b22566dff2f1d2327911"
 
 [metadata.files]
 aiohttp = [
@@ -1222,6 +1257,10 @@ charset-normalizer = [
 chess = [
     {file = "chess-1.9.3-py3-none-any.whl", hash = "sha256:a27c45707671d413d045ab2ee8b765c98bfb1bf7ba093a704cfed7e4f758fd58"},
     {file = "chess-1.9.3.tar.gz", hash = "sha256:6a430cd4666ad6c757d62576fb3ae2112502620922fd904df1af680dfcd07692"},
+]
+click = [
+    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
+    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
 ]
 colorama = [
     {file = "colorama-0.4.5-py2.py3-none-any.whl", hash = "sha256:854bf444933e37f5824ae7bfc1e98d5bce2ebe4160d46b5edf346a89358e99da"},
@@ -1607,6 +1646,13 @@ pandocfilters = [
 parso = [
     {file = "parso-0.8.3-py2.py3-none-any.whl", hash = "sha256:c001d4636cd3aecdaf33cbb40aebb59b094be2a74c556778ef5576c175e19e75"},
     {file = "parso-0.8.3.tar.gz", hash = "sha256:8c07be290bb59f03588915921e29e8a50002acaf2cdc5fa0e0114f91709fafa0"},
+]
+peewee = [
+    {file = "peewee-3.15.2.tar.gz", hash = "sha256:94d8eb7fc2b8d97d6216382bf5961239645dc9e2473b0e732eb6c79c920c4768"},
+]
+peewee-migrate = [
+    {file = "peewee-migrate-1.5.1.tar.gz", hash = "sha256:8e17b9c27cd76084ade208681692c02500adcc9eaf6f8b43610fa1666a09fb9a"},
+    {file = "peewee_migrate-1.5.1-py3-none-any.whl", hash = "sha256:7203d9fa92fc6e76b5d77a70fed4bfd56bcdd947b787d45912196c4a7916c73a"},
 ]
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
