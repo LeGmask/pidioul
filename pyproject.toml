@@ -13,6 +13,7 @@ chess = "^1.9.3"
 dynaconf = "^3.1.9"
 peewee = "^3.15.2"
 peewee-migrate = "^1.5.1"
+CairoSVG = "^2.5.2"
 
 
 [build-system]

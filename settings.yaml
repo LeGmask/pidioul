@@ -1,1 +1,5 @@
---- {}
+database:
+  path: 'database.db'
+
+chess:
+  save_file: 'game.pgn'
