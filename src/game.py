@@ -1,5 +1,6 @@
 import io
 import os
+from datetime import datetime
 
 import chess
 import chess.pgn
@@ -11,9 +12,11 @@ from dynaconf import Dynaconf
 from src.models.color import Color
 from src.models.gameboard import GameBoard
 from src.models.piece import Piece
+from src.models.runtimeConfig import RuntimeConfig
+from src.singleton import Singleton
 
 
-class Game:
+class Game(metaclass=Singleton):
 	def __init__(self, config: Dynaconf) -> None:
 		self.board: chess.Board | None = None
 		self.state: None | Color = None
@@ -106,6 +109,13 @@ class Game:
 		piece = GameBoard.get(GameBoard.position == move.from_square)
 		piece.position = move.to_square
 		piece.save()
+
+		# if white update the next valid timestamp to play
+		if self.board.turn:
+			next_white_play = RuntimeConfig.get_key_or_default('nextWhitePlay',
+															   datetime.now().replace(hour=12, minute=0, second=0,
+																					  microsecond=0).timestamp())
+			RuntimeConfig.upsert('nextWhitePlay', float(next_white_play) + 60 * 60 * 24)
 
 		self.save_board()
 

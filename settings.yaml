@@ -3,3 +3,4 @@ database:
 
 chess:
   save_file: 'game.pgn'
+  game_message: 'MESSAGE TBD'

@@ -6,6 +6,7 @@ from discord.ui import View, Button, Select
 
 from src.game import Game
 from src.models.gameboard import GameBoard
+from src.models.runtimeConfig import RuntimeConfig
 
 
 class ActionButton(Button):
@@ -19,6 +20,12 @@ class ActionButton(Button):
 
 		await interaction.response.edit_message(content=f"playing {self.action}",
 												attachments=[self.game.get_discord_file()], view=None)
+
+		await interaction.channel.send(f"{interaction.user.mention} playing {self.action}")
+
+		# update the gameboard svg
+		message = await interaction.channel.parent.fetch_message(int(RuntimeConfig.get_key('message_board').value))
+		await message.edit(attachments=[self.game.get_discord_file()])
 		self.view.stop()
 
 
@@ -58,5 +65,9 @@ class PlayView(View):
 	# 	self.add_item(ActionButton(self.game, action))
 
 	def init_move_selection(self):
+		items = filter(lambda item: not isinstance(item, PieceSelect), self.children)
+		for item in items:
+			self.remove_item(item)
+
 		for action in self.game.get_possible_moves_from(self.piece.position):
 			self.add_item(ActionButton(self.game, action))
