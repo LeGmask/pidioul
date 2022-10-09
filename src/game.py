@@ -1,6 +1,8 @@
 import io
 import os
 from datetime import datetime
+from random import choice
+from typing import Union
 
 import chess
 import chess.pgn
@@ -79,6 +81,19 @@ class Game(metaclass=Singleton):
 	def get_possible_moves_from(self, square: chess.Square) -> list[chess.Move]:
 		return list(self.board.generate_legal_moves(from_mask=chess.BB_SQUARES[square]))
 
+	@staticmethod
+	def get_promotion_piece(piece_type: chess.PieceType) -> Piece:
+		prefix = choice(['_l', '_r'])
+		match piece_type:
+			case chess.QUEEN:
+				return Piece.get(name='queen')
+			case chess.ROOK:
+				return Piece.get(name=f'rook{prefix}')
+			case chess.BISHOP:
+				return Piece.get(name=f'bishop{prefix}')
+			case chess.KNIGHT:
+				return Piece.get(name=f'knight{prefix}')
+
 	def move(self, move: chess.Move) -> None:
 		if not self.board.is_legal(move):
 			raise InvalidMoveException('Illegal move')
@@ -86,14 +101,12 @@ class Game(metaclass=Singleton):
 		# If the move is a capture, remove the piece from the board
 		if self.board.is_capture(move):
 			captured_piece = GameBoard.get(GameBoard.position == move.to_square)
-			captured_piece.position = None
-			captured_piece.save()
+			captured_piece.delete_instance()
 
 		# If the move is an en passant, remove the piece from the board
 		if self.board.is_en_passant(move):
 			captured_piece = GameBoard.get(GameBoard.position == move.to_square + (8 if self.board.turn else -8))
-			captured_piece.position = None
-			captured_piece.save()
+			captured_piece.delete_instance()
 
 		# If the move is a castling, move the rook
 		if self.board.is_castling(move):
@@ -109,6 +122,11 @@ class Game(metaclass=Singleton):
 		piece = GameBoard.get(GameBoard.position == move.from_square)
 		piece.position = move.to_square
 		piece.save()
+
+		# If the move is a promotion, change the piece in db
+		if move.promotion:
+			piece.piece = Game.get_promotion_piece(move.promotion)
+			piece.save()
 
 		# if white update the next valid timestamp to play
 		if self.board.turn:
@@ -136,6 +154,3 @@ class Game(metaclass=Singleton):
 
 class InvalidMoveException(Exception):
 	pass
-
-# def get_possible_moves(self, piece) -> list:
-# 	return self.board.legal_moves
