@@ -2,6 +2,7 @@ from typing import List
 
 import chess
 import discord
+from discord import ButtonStyle
 from discord.ui import View, Button, Select
 
 from src.game import Game
@@ -37,9 +38,10 @@ class PieceSelect(Select):
 
 	async def callback(self, interaction: discord.Interaction):
 		self.view.piece = self.view.pieces[int(self.values[0])]
-		self.view.init_move_selection()
+		self.view.update_view(force_update=True)
 
 		png = self.view.game.get_discord_file(
+
 			squares=chess.SquareSet(
 				[move.to_square for move in self.view.game.get_possible_moves_from(self.view.piece.position)],
 			),
@@ -48,26 +50,61 @@ class PieceSelect(Select):
 												attachments=[png])
 
 
+class NextPageButton(Button):
+	async def callback(self, interaction: discord.Interaction):
+		self.view.page += 1
+		self.view.update_view()
+		await interaction.response.edit_message(view=self.view)
+
+
+class PreviousPageButton(Button):
+	async def callback(self, interaction: discord.Interaction):
+		self.view.page -= 1
+		self.view.update_view()
+		await interaction.response.edit_message(view=self.view)
+
+
 class PlayView(View):
 	def __init__(self, game: Game, pieces: List[GameBoard]):
 		super().__init__()
 
+		self.number_of_buttons = None
 		self.pieces: None | List[GameBoard] = pieces
 		self.piece: None | GameBoard = None
 		self.game = game
+
+		self.moves = []
+		self.page = 0
 
 		if len(self.pieces) > 1:
 			self.add_item(PieceSelect(self.pieces))
 		else:
 			self.pieces = self.pieces[0]
+			self.update_view()
 
-	# for action in self.game.get_possible_moves_from(self.pieces.position):
-	# 	self.add_item(ActionButton(self.game, action))
+	def insert_page_control(self):
+		self.add_item(Button(label=" ", style=ButtonStyle.grey, row=4, disabled=True))
+		self.add_item(PreviousPageButton(label="Previous", style=ButtonStyle.blurple, row=4, disabled=self.page == 0))
+		self.add_item(
+			Button(label=f"{self.page + 1}/{len(self.moves) // self.number_of_buttons}", style=ButtonStyle.grey, row=4,
+				   disabled=True))
+		self.add_item(NextPageButton(label="Next", style=ButtonStyle.blurple, row=4,
+									 disabled=len(self.moves) // self.number_of_buttons == self.page + 1))
+		self.add_item(Button(label=" ", style=ButtonStyle.grey, row=4, disabled=True))
 
-	def init_move_selection(self):
+	def update_view(self, force_update=False):
 		items = filter(lambda item: not isinstance(item, PieceSelect), self.children)
 		for item in items:
 			self.remove_item(item)
 
-		for action in self.game.get_possible_moves_from(self.piece.position):
-			self.add_item(ActionButton(self.game, action))
+		if not self.moves or force_update:  # populate the moves if it's empty
+			self.moves = self.game.get_possible_moves_from(self.piece.position)
+
+		if len(self.moves) > 25 - (5 * len(self.children)):
+			self.number_of_buttons = 20 - (5 * len(self.children))
+			self.insert_page_control()
+		else:
+			self.number_of_buttons = len(self.moves)
+
+		for i in range(self.page * self.number_of_buttons, self.number_of_buttons + self.page * self.number_of_buttons):
+			self.add_item(ActionButton(self.game, self.moves[i]))
