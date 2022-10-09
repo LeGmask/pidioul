@@ -73,7 +73,7 @@ class Chess(commands.Cog):
 			)
 		else:
 			message = 'You have multiple pieces (highlighted in blue), select the one you want to play with'
-			png = self.game.get_discord_file(fill=dict.fromkeys([piece.position for piece in pieces], "#8fbcbb"))
+			png = self.game.get_discord_file(fill=dict.fromkeys([piece.position for piece in pieces], "#88c0d0"))
 
 		await interaction.response.send_message(message, ephemeral=True, view=PlayView(self.game, pieces), files=[png])
 

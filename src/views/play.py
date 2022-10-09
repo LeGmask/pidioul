@@ -17,8 +17,8 @@ class ActionButton(Button):
 
 		message = chess.square_name(move.to_square)
 		if move.promotion:
-			message += f"and promote to ({chess.piece_name(move.promotion)})"
-		super().__init__(label=message , style=ButtonStyle.primary)
+			message += f" and promote to {chess.piece_name(move.promotion)}"
+		super().__init__(label=message, style=ButtonStyle.primary)
 
 	async def callback(self, interaction: discord.Interaction):
 		self.game.move(self.action)
@@ -42,7 +42,8 @@ class ActionButton(Button):
 class PieceSelect(Select):
 	def __init__(self, pieces: List[GameBoard]):
 		super().__init__(placeholder="Select your piece",
-						 options=[discord.SelectOption(label=f"{piece.piece.name}, {chess.square_name(piece.position)}", value=str(id)) for
+						 options=[discord.SelectOption(label=f"{piece.piece.name}, {chess.square_name(piece.position)}",
+													   value=str(id)) for
 								  id, piece in enumerate(pieces)])
 
 	async def callback(self, interaction: discord.Interaction):
@@ -50,7 +51,7 @@ class PieceSelect(Select):
 		self.view.update_view(force_update=True)
 
 		png = self.view.game.get_discord_file(
-
+			fill={self.view.piece.position: "#d08770"},
 			squares=chess.SquareSet(
 				[move.to_square for move in self.view.game.get_possible_moves_from(self.view.piece.position)],
 			),
