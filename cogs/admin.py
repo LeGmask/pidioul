@@ -8,6 +8,7 @@ from discord.ext import commands
 from src.config import settings
 from src.game import Game
 from src.models.color import Color
+from src.models.piece import Piece
 from src.models.runtimeConfig import RuntimeConfig
 from src.pidioul import Pidioul
 
@@ -84,23 +85,44 @@ class AdminCog(commands.GroupCog, name="admin"):
 
 	@app_commands.command(name="setup_color_role")
 	@app_commands.checks.has_permissions(administrator=True)
-	@app_commands.rename(color_to_update='color')
-	@app_commands.describe(color_to_update="The color you want to assign a role to.",
+	@app_commands.describe(color="The color you want to assign a role to.",
 						   role="The role you want to assign to the color.")
-	async def setup_color_role(self, interaction: discord.Interaction, color_to_update: Literal['white', 'black'],
+	async def setup_color_role(self, interaction: discord.Interaction, color: Literal['white', 'black'],
 							   role: discord.Role) -> None:
 		"""
 		Set up the role that belong to a color.
 
 		:param interaction:
-		:param color_to_update:
+		:param color:
 		:param role:
 		:return:
 		"""
-		color = Color.get(Color.name == color_to_update)
+		color = Color.get(Color.name == color)
 		color.role = role.id
 		color.save()
+
 		await interaction.response.send_message(f"Role {role.mention} assigned to color {color.name}.", ephemeral=True)
+
+	@app_commands.command(name="setup_piece_role")
+	@app_commands.checks.has_permissions(administrator=True)
+	@app_commands.describe(piece="The piece you want to assign a role to.",
+						   role="The role you want to assign to the piece.")
+	async def setup_piece_role(self, interaction: discord.Interaction, piece: Literal[
+		"rook_l", "knigh_l", "bishop_l", "queen", "king", "bishop_r", "knight_r", "rook_r", "pawn"],
+							   role: discord.Role) -> None:
+		"""
+		Set up the role that belong to a color.
+
+		:param piece:
+		:param interaction:
+		:param role:
+		:return:
+		"""
+		piece = Piece.get(Piece.name == piece)
+		piece.role = role.id
+		piece.save()
+
+		await interaction.response.send_message(f"Role {role.mention} assigned to {piece.name}.", ephemeral=True)
 
 
 async def setup(bot: Pidioul) -> None:

@@ -25,7 +25,6 @@ async def check_if_playable(interaction: discord.Interaction) -> bool:
 	next_white_play = RuntimeConfig.get_key_or_default("nextWhitePlay", 0)
 
 	if datetime.now().timestamp() >= float(next_white_play):
-		print(datetime.now().timestamp(), float(next_white_play))
 		return True
 
 	await interaction.response.send_message("There's no more move for today :p", ephemeral=True)
@@ -49,6 +48,10 @@ class Chess(commands.Cog):
 		:return:
 		"""
 		# check if the color is the same as the user
+		user_color = get_user_color(interaction.user)
+		if user_color is None:
+			await interaction.response.send_message("You don't have a color assigned, you can't play", ephemeral=True)
+			return
 		if self.game.board.turn != (get_user_color(interaction.user).id == 1):
 			await interaction.response.send_message("It's not your turn.", ephemeral=True)
 			return
