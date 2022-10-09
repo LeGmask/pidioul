@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 from typing import Optional, Literal
 
 import discord
@@ -80,6 +81,8 @@ class AdminCog(commands.GroupCog, name="admin"):
 		game.new_board()
 		game.save_board()
 
+		RuntimeConfig.upsert('nextWhitePlay', datetime.now().replace(hour=12, minute=0, second=0,
+																	 microsecond=0).timestamp())
 		board = await message.channel.send(file=game.get_discord_file())
 		RuntimeConfig.upsert('message_board', board.id)
 

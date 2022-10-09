@@ -3,4 +3,4 @@ database:
 
 chess:
   save_file: 'game.pgn'
-  game_message: 'MESSAGE TBD'
+  game_message: "Ceci est le champ de bataille ! Vous vous affrontez dans une partie d'échecs ! Chaque utilisateur a une couleur (équipe) et une pièce associée. L'objectif est de gagner la partie en équipe et non pas simplement tout seul :p. Vous avez à votre disposition un salon pour parler en équipe et décider (ou pas) de quel mouvement jouer. Bonne chance ! \n\nPS: Afin de faire durer la partie dans le temps, 1 mouvement est disponible (par équipe) chaque jour à partir de 12 h 00, si un jour, on ne joue pas le mouvement du jour est ajouté et il y a donc plusieurs mouvements disponibles ;) !"

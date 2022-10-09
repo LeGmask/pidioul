@@ -2,7 +2,6 @@ import io
 import os
 from datetime import datetime
 from random import choice
-from typing import Union
 
 import chess
 import chess.pgn

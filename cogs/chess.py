@@ -21,7 +21,6 @@ def check_if_valid_thread(interaction: discord.Interaction) -> bool:
 
 async def check_if_playable(interaction: discord.Interaction) -> bool:
 	"""Checks if current user can play."""
-	game = Game(settings)
 	next_white_play = RuntimeConfig.get_key_or_default("nextWhitePlay", 0)
 
 	if datetime.now().timestamp() >= float(next_white_play):
