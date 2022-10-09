@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+    bot:
+        build: ./docker/
+        command: poetry run python main.py
+        restart: always
+        volumes:
+            - ./.secrets.yaml:/app/.secrets.yaml
+            - ./game.pgn:/app/game.pgn
+            - ./database.db:/app/database.db
