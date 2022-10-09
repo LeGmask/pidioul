@@ -6,7 +6,7 @@ authors = ["Evann DREUMONT <53308142+LeGmask@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 jupyter = "^1.0.0"
 chess = "^1.9.3"
 "discord.py" = "^2.0.1"
