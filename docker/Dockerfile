@@ -1,4 +1,4 @@
-FROM python:3.10.7-slim-buster
+FROM python:3.9-buster
 
 # Set the working directory
 RUN mkdir -p /app
