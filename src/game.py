@@ -55,7 +55,7 @@ class Game(metaclass=Singleton):
 						GameBoard.create(
 							piece=piece,
 							color=color,
-							position=i + (8 if color.color == 'white' else 48),
+							position=i + (8 if color.name == 'white' else 48),
 						)
 				else:
 					GameBoard.create(piece=piece, color=color, position=((color.id - 1) * 56) + piece.position)

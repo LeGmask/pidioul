@@ -14,7 +14,11 @@ class ActionButton(Button):
 	def __init__(self, game: Game, move: chess.Move):
 		self.game = game
 		self.action = move
-		super().__init__(label=str(move)[2:])
+
+		message = chess.square_name(move.to_square)
+		if move.promotion:
+			message += f"and promote to ({chess.piece_name(move.promotion)})"
+		super().__init__(label=message , style=ButtonStyle.primary)
 
 	async def callback(self, interaction: discord.Interaction):
 		self.game.move(self.action)
@@ -38,7 +42,7 @@ class ActionButton(Button):
 class PieceSelect(Select):
 	def __init__(self, pieces: List[GameBoard]):
 		super().__init__(placeholder="Select your piece",
-						 options=[discord.SelectOption(label=f"{piece.piece.name}, {piece.position}", value=str(id)) for
+						 options=[discord.SelectOption(label=f"{piece.piece.name}, {chess.square_name(piece.position)}", value=str(id)) for
 								  id, piece in enumerate(pieces)])
 
 	async def callback(self, interaction: discord.Interaction):
