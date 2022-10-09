@@ -69,31 +69,6 @@ class PreviousPageButton(Button):
 		await interaction.response.edit_message(view=self.view)
 
 
-# class PromotionView(View):
-# 	def __init__(self, game: Game, move: chess.Move):
-# 		super().__init__()
-# 		self.game = game
-# 		self.move = move
-#
-# 	@discord.ui.select(placeholder="Select promotion", options=[
-# 		discord.SelectOption(label="Queen", value=chess.QUEEN),
-# 		discord.SelectOption(label="Rook", value=chess.ROOK),
-# 		discord.SelectOption(label="Bishop", value=chess.BISHOP),
-# 		discord.SelectOption(label="Knight", value=chess.KNIGHT)])
-# 	async def move_with_promotion(self, interaction: discord.Interaction, select: discord.ui.Select):
-# 		self.game.move(self.move, promotion=int(select.values[0]))
-#
-# 		await interaction.response.edit_message(content=f"playing {self.move}",
-# 												attachments=[self.game.get_discord_file()], view=None)
-#
-# 		await interaction.channel.send(f"{interaction.user.mention} playing {self.move}")
-#
-# 		# update the gameboard svg
-# 		message = await interaction.channel.parent.fetch_message(int(RuntimeConfig.get_key('message_board').value))
-# 		await message.edit(attachments=[self.game.get_discord_file()])
-# 		self.stop()
-
-
 class PlayView(View):
 	def __init__(self, game: Game, pieces: List[GameBoard]):
 		super().__init__()

@@ -138,15 +138,15 @@ class Game(metaclass=Singleton):
 		self.save_board()
 
 	def is_color(self, color: Color) -> bool:
-		return self.board.turn == (color.color == 'white')
+		return self.board.turn == (color.name == 'white')
 
 	def update_state(self):
 		result = self.board.result()
 		if self.board.result() != '*':
 			if result == '1-0':
-				self.state = Color.select().where(Color.color == 'white').get()
+				self.state = Color.select().where(Color.name == 'white').get()
 			elif result == '0-1':
-				self.state = Color.select().where(Color.color == 'black').get()
+				self.state = Color.select().where(Color.name == 'black').get()
 
 	def __exit__(self, exc_type, exc_val, exc_tb):
 		self.save_board()

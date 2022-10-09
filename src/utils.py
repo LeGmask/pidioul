@@ -16,7 +16,7 @@ def get_user_possible_pieces(user: Union[discord.User, discord.Member]) -> List[
 	except IndexError:
 		return []
 
-	return [piece for piece in GameBoard.select().where(GameBoard.piece == user_piece, GameBoard.color == color)]
+	return list(GameBoard.select().where(GameBoard.piece == user_piece, GameBoard.color == color))
 
 
 def get_user_color(user: Union[discord.User, discord.Member]) -> Union[Color, None]:

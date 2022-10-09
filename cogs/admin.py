@@ -7,6 +7,7 @@ from discord.ext import commands
 
 from src.config import settings
 from src.game import Game
+from src.models.color import Color
 from src.models.runtimeConfig import RuntimeConfig
 from src.pidioul import Pidioul
 
@@ -80,6 +81,26 @@ class AdminCog(commands.GroupCog, name="admin"):
 
 		board = await message.channel.send(file=game.get_discord_file())
 		RuntimeConfig.upsert('message_board', board.id)
+
+	@app_commands.command(name="setup_color_role")
+	@app_commands.checks.has_permissions(administrator=True)
+	@app_commands.rename(color_to_update='color')
+	@app_commands.describe(color_to_update="The color you want to assign a role to.",
+						   role="The role you want to assign to the color.")
+	async def setup_color_role(self, interaction: discord.Interaction, color_to_update: Literal['white', 'black'],
+							   role: discord.Role) -> None:
+		"""
+		Set up the role that belong to a color.
+
+		:param interaction:
+		:param color_to_update:
+		:param role:
+		:return:
+		"""
+		color = Color.get(Color.name == color_to_update)
+		color.role = role.id
+		color.save()
+		await interaction.response.send_message(f"Role {role.mention} assigned to color {color.name}.", ephemeral=True)
 
 
 async def setup(bot: Pidioul) -> None:
