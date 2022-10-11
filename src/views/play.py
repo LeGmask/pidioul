@@ -89,7 +89,7 @@ class PlayView(View):
 		if len(self.pieces) > 1:
 			self.add_item(PieceSelect(self.pieces))
 		else:
-			self.pieces = self.pieces[0]
+			self.piece = self.pieces[0]
 			self.update_view()
 
 	def insert_page_control(self):
@@ -109,6 +109,7 @@ class PlayView(View):
 
 		if not self.moves or force_update:  # populate the moves if it's empty
 			self.moves = self.game.get_possible_moves_from(self.piece.position)
+
 
 		if len(self.moves) > 25 - (5 * len(self.children)):
 			self.number_of_buttons = 20 - (5 * len(self.children))
